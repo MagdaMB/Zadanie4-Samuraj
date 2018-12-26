@@ -6,11 +6,11 @@ document.body.style.backgroundColor = `rgb(${red},${green},${blue})`;
 
 const changeColor = (e) => {
     //instrukcja if
-    // if (e.keyCode === 38) {
+    // if (e.keyCode === 38 && red >= 0) {
     //     red -= 5;
     //     green -= 5;
     //     blue -= 5;
-    // } else if (e.keyCode === 40) {
+    // } else if (e.keyCode === 40 && red <= 255) {
     //     red += 5;
     //     green += 5;
     //     blue += 5;
