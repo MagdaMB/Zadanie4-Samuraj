@@ -1,15 +1,34 @@
-document.body.addEventListener("mousemove", (event) => {
+const box = document.querySelector("div");
 
-    document.querySelector("h1").textContent = `Moja pozycja to: ${event.clientX}, ${event.clientY}`;
+let divX = 100;
+let divY = 50;
 
-    // document.body.style.backgroundColor = `#${event.clientX}${event.clientY}`;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+box.style.left = `${divX}px`;
+box.style.top = `${divY}px`;
 
-    const red = Math.floor(Math.random() * 255);
-    const green = Math.floor(Math.random() * 255);
-    const blue = Math.floor(Math.random() * 255);
+let drawActive = false;
 
-    document.body.style.backgroundColor = `rgb(${red},${green},${blue}`;
+let insertDivX;
+let insertDivY;
 
-})
+box.addEventListener('mousedown', (e) => {
+    box.style.backgroundColor = "green";
+    drawActive = !drawActive;
+    insertDivX = e.offsetX;
+    insertDivY = e.offsetY;
+});
+
+box.addEventListener('mousemove', (e) => {
+    if (drawActive) {
+        divX = e.clientX - insertDivX;
+        divY = e.clientY - insertDivY;
+
+        box.style.left = `${divX}px`;
+        box.style.top = `${divY}px`;
+    }
+});
+
+box.addEventListener('mouseup', () => {
+    box.style.backgroundColor = "black";
+    drawActive = !drawActive;
+});
